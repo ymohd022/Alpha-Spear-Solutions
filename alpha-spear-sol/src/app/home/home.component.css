@@ -1,0 +1,75 @@
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  padding-top: 100px; /* Account for fixed navbar */
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.05)" points="0,0 1000,300 1000,1000 0,700"/></svg>');
+  background-size: cover;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-image {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-buttons .btn {
+  min-width: 150px;
+}
+
+.service-icon {
+  position: relative;
+}
+
+.service-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--secondary-blue), var(--accent-cyan));
+  border-radius: 50%;
+  opacity: 0.1;
+  z-index: -1;
+}
+
+.card {
+  transition: all 0.3s ease;
+  border-radius: 15px;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding-top: 80px;
+    text-align: center;
+  }
+  
+  .hero-buttons {
+    text-align: center;
+  }
+  
+  .hero-buttons .btn {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}

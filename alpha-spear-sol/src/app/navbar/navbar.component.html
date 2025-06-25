@@ -1,0 +1,102 @@
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top shadow-custom">
+  <div class="container">
+    <!-- Logo -->
+    <a class="navbar-brand d-flex align-items-center" href="#home">
+      <img src="logo.jpeg" alt="Alpha Spear Solutions" height="40" class="me-2">
+      <span class="fw-bold text-gradient fs-5">Alpha Spear Solutions</span>
+    </a>
+
+    <!-- Mobile Toggle -->
+    <button class="navbar-toggler border-0" type="button" (click)="toggleMenu()" 
+            [attr.aria-expanded]="isMenuOpen" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navigation Menu -->
+    <div class="collapse navbar-collapse" [class.show]="isMenuOpen" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item">
+          <a class="nav-link fw-500 px-3" href="#home">
+            <i class="fas fa-home me-1"></i>Home
+          </a>
+        </li>
+        
+        <!-- Services Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-500 px-3" href="#" role="button" 
+             data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-cogs me-1"></i>Services
+          </a>
+          <ul class="dropdown-menu shadow-lg border-0">
+            <li><a class="dropdown-item" href="#web-development">
+              <i class="fas fa-code me-2 text-primary"></i>Web & Cloud Development
+            </a></li>
+            <li><a class="dropdown-item" href="#ai-solutions">
+              <i class="fas fa-robot me-2 text-primary"></i>AI & Automation Solutions
+            </a></li>
+            <li><a class="dropdown-item" href="#erp-systems">
+              <i class="fas fa-database me-2 text-primary"></i>ERP/CRM Systems
+            </a></li>
+            <li><a class="dropdown-item" href="#custom-software">
+              <i class="fas fa-laptop-code me-2 text-primary"></i>Custom Software
+            </a></li>
+          </ul>
+        </li>
+
+        <!-- Solutions Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle fw-500 px-3" href="#" role="button" 
+             data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-lightbulb me-1"></i>Solutions
+          </a>
+          <ul class="dropdown-menu shadow-lg border-0">
+            <li><h6 class="dropdown-header text-primary">Industry Verticals</h6></li>
+            <li><a class="dropdown-item" href="#healthcare">
+              <i class="fas fa-heartbeat me-2 text-success"></i>Healthcare
+            </a></li>
+            <li><a class="dropdown-item" href="#retail">
+              <i class="fas fa-shopping-cart me-2 text-warning"></i>Retail
+            </a></li>
+            <li><a class="dropdown-item" href="#fintech">
+              <i class="fas fa-chart-line me-2 text-info"></i>FinTech
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#case-studies">
+              <i class="fas fa-chart-bar me-2 text-primary"></i>Case Studies
+            </a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link fw-500 px-3" href="#about">
+            <i class="fas fa-users me-1"></i>About Us
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link fw-500 px-3" href="#resources">
+            <i class="fas fa-book me-1"></i>Resource Hub
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link fw-500 px-3" href="#careers">
+            <i class="fas fa-briefcase me-1"></i>Careers
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link fw-500 px-3" href="#contact">
+            <i class="fas fa-envelope me-1"></i>Contact
+          </a>
+        </li>
+
+        <li class="nav-item ms-2">
+          <button class="btn btn-custom btn-sm">
+            <i class="fas fa-quote-left me-1"></i>Get Quote
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

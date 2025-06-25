@@ -1,0 +1,155 @@
+<footer class="footer-custom">
+  <!-- Main Footer Content -->
+  <div class="container py-5">
+    <div class="row g-4">
+      <!-- Company Info -->
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-section animate-fade-in">
+          <div class="d-flex align-items-center mb-4">
+            <img src="logo.jpeg" alt="Alpha Spear Solutions" height="50" class="me-3">
+            <div>
+              <h5 class="text-gradient mb-0">Alpha Spear Solutions</h5>
+              <small class="text-light opacity-75">Leading Technology Solutions</small>
+            </div>
+          </div>
+          <p class="text-light opacity-75 mb-4">
+            Empowering businesses with cutting-edge technology solutions. We specialize in web development, 
+            AI automation, and custom software solutions that drive innovation and growth.
+          </p>
+          
+          <!-- Social Links -->
+          <div class="social-links">
+            <h6 class="text-white mb-3">Follow Us</h6>
+            <div class="d-flex gap-3">
+              <a *ngFor="let social of socialLinks" 
+                 [href]="social.url" 
+                 class="social-link hover-scale"
+                 [title]="social.name">
+                <i [class]="social.icon"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-lg-2 col-md-6">
+        <div class="footer-section animate-fade-in">
+          <h6 class="text-white mb-4">
+            <i class="fas fa-link me-2 text-primary"></i>Quick Links
+          </h6>
+          <ul class="list-unstyled">
+            <li *ngFor="let link of quickLinks" class="mb-2">
+              <a [href]="link.url" class="footer-link">
+                <i class="fas fa-chevron-right me-2"></i>{{ link.name }}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Services -->
+      <div class="col-lg-2 col-md-6">
+        <div class="footer-section animate-fade-in">
+          <h6 class="text-white mb-4">
+            <i class="fas fa-cogs me-2 text-primary"></i>Services
+          </h6>
+          <ul class="list-unstyled">
+            <li *ngFor="let service of services" class="mb-2">
+              <a [href]="service.url" class="footer-link">
+                <i class="fas fa-chevron-right me-2"></i>{{ service.name }}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Resources -->
+      <div class="col-lg-2 col-md-6">
+        <div class="footer-section animate-fade-in">
+          <h6 class="text-white mb-4">
+            <i class="fas fa-book me-2 text-primary"></i>Resources
+          </h6>
+          <ul class="list-unstyled">
+            <li *ngFor="let resource of resources" class="mb-2">
+              <a [href]="resource.url" class="footer-link">
+                <i class="fas fa-chevron-right me-2"></i>{{ resource.name }}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="col-lg-2 col-md-6">
+        <div class="footer-section animate-fade-in">
+          <h6 class="text-white mb-4">
+            <i class="fas fa-envelope me-2 text-primary"></i>Contact
+          </h6>
+          <div class="contact-info">
+            <div class="contact-item mb-3">
+              <i class="fas fa-map-marker-alt me-2 text-primary"></i>
+              <small class="text-light opacity-75">
+                123 Tech Street<br>
+                Innovation City, IC 12345
+              </small>
+            </div>
+            <div class="contact-item mb-3">
+              <i class="fas fa-phone me-2 text-primary"></i>
+              <small class="text-light opacity-75">+1 (555) 123-4567</small>
+            </div>
+            <div class="contact-item mb-3">
+              <i class="fas fa-envelope me-2 text-primary"></i>
+              <small class="text-light opacity-75">info&#64;alphaspear.com</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Newsletter Signup -->
+    <div class="row mt-5">
+      <div class="col-12">
+        <div class="newsletter-section text-center p-4 rounded-3" 
+             style="background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2);">
+          <h5 class="text-white mb-3">
+            <i class="fas fa-paper-plane me-2 text-primary"></i>Stay Updated
+          </h5>
+          <p class="text-light opacity-75 mb-4">
+            Subscribe to our newsletter for the latest tech insights and company updates.
+          </p>
+          <div class="row justify-content-center">
+            <div class="col-md-6">
+              <div class="input-group">
+                <input type="email" class="form-control" placeholder="Enter your email address">
+                <button class="btn btn-custom" type="button">
+                  <i class="fas fa-paper-plane me-1"></i>Subscribe
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Footer -->
+  <div class="border-top border-secondary">
+    <div class="container py-4">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <p class="text-light opacity-75 mb-0">
+            &copy; {{ currentYear }} Alpha Spear Solutions. All rights reserved.
+          </p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <div class="footer-legal">
+            <a href="#privacy" class="footer-link me-3">Privacy Policy</a>
+            <a href="#terms" class="footer-link me-3">Terms of Use</a>
+            <a href="#cookies" class="footer-link">Cookie Policy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
