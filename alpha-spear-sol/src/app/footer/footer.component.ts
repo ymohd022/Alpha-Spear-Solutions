@@ -25,11 +25,11 @@ export class FooterComponent {
   ];
 
   services = [
-    { name: 'Web Development', url: '#web-development' },
-    { name: 'AI Solutions', url: '#ai-solutions' },
-    { name: 'ERP Systems', url: '#erp-systems' },
-    { name: 'Custom Software', url: '#custom-software' },
-    { name: 'Cloud Services', url: '#cloud-services' }
+    { name: 'Web Development', url: '/services/web-development' },
+    { name: 'AI Solutions', url: '/services/ai-automation' },
+    { name: 'ERP Systems', url: '/services/erp-systems' },
+    { name: 'Custom Software', url: '/services/custom-software' },
+    { name: 'Cloud Services', url: '/services/web-development' }
   ];
 
   resources = [

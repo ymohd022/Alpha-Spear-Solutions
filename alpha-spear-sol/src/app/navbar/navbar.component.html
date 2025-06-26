@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top shadow-custom">
   <div class="container">
     <!-- Logo -->
-    <a class="navbar-brand d-flex align-items-center" href="#home">
+    <a class="navbar-brand d-flex align-items-center" routerLink="/">
       <img src="logo.jpeg" alt="Alpha Spear Solutions" height="40" class="me-2">
       <span class="fw-bold text-gradient fs-5">Alpha Spear Solutions</span>
     </a>
@@ -16,7 +16,7 @@
     <div class="collapse navbar-collapse" [class.show]="isMenuOpen" id="navbarNav">
       <ul class="navbar-nav ms-auto align-items-center">
         <li class="nav-item">
-          <a class="nav-link fw-500 px-3" href="#home">
+          <a class="nav-link fw-500 px-3" routerLink="/" routerLinkActive="active">
             <i class="fas fa-home me-1"></i>Home
           </a>
         </li>
@@ -28,16 +28,20 @@
             <i class="fas fa-cogs me-1"></i>Services
           </a>
           <ul class="dropdown-menu shadow-lg border-0">
-            <li><a class="dropdown-item" href="#web-development">
+            <li><a class="dropdown-item" routerLink="/services">
+              <i class="fas fa-th-large me-2 text-primary"></i>All Services
+            </a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" routerLink="/services/web-development">
               <i class="fas fa-code me-2 text-primary"></i>Web & Cloud Development
             </a></li>
-            <li><a class="dropdown-item" href="#ai-solutions">
+            <li><a class="dropdown-item" routerLink="/services/ai-automation">
               <i class="fas fa-robot me-2 text-primary"></i>AI & Automation Solutions
             </a></li>
-            <li><a class="dropdown-item" href="#erp-systems">
+            <li><a class="dropdown-item" routerLink="/services/erp-systems">
               <i class="fas fa-database me-2 text-primary"></i>ERP/CRM Systems
             </a></li>
-            <li><a class="dropdown-item" href="#custom-software">
+            <li><a class="dropdown-item" routerLink="/services/custom-software">
               <i class="fas fa-laptop-code me-2 text-primary"></i>Custom Software
             </a></li>
           </ul>

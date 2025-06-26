@@ -1,0 +1,195 @@
+<!-- Hero Section -->
+<section class="service-hero gradient-bg">
+  <div class="container">
+    <div class="row align-items-center min-vh-100">
+      <div class="col-lg-6">
+        <div class="hero-content text-white animate-fade-in">
+          <div class="breadcrumb-nav mb-3">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/services" class="text-white-50">Services</a></li>
+                <li class="breadcrumb-item active text-white" aria-current="page">AI & Automation</li>
+              </ol>
+            </nav>
+          </div>
+          <h1 class="display-4 fw-bold mb-4">
+            AI & Automation 
+            <span class="text-warning">Solutions</span>
+          </h1>
+          <p class="lead mb-4 opacity-90">
+            Transform your business operations with intelligent automation and machine learning solutions 
+            that drive efficiency, reduce costs, and unlock new opportunities for growth.
+          </p>
+          <div class="hero-buttons">
+            <button class="btn btn-custom btn-lg me-3 mb-2">
+              <i class="fas fa-calendar me-2"></i>Schedule Demo
+            </button>
+            <button class="btn btn-outline-light btn-lg mb-2">
+              <i class="fas fa-download me-2"></i>Download Case Study
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="hero-visual text-center">
+          <div class="ai-animation">
+            <i class="fas fa-robot fa-6x text-white opacity-75"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Benefits Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center mb-5">
+        <h2 class="display-5 fw-bold text-gradient">Why Choose AI & Automation?</h2>
+        <p class="lead text-muted">Discover the transformative benefits for your business</p>
+      </div>
+    </div>
+    
+    <div class="row g-4">
+      <div *ngFor="let benefit of benefits" class="col-lg-3 col-md-6">
+        <div class="benefit-card h-100 text-center p-4 shadow-custom hover-scale">
+          <div class="benefit-icon mb-3">
+            <i [class]="benefit.icon + ' fa-3x text-primary'"></i>
+          </div>
+          <h5 class="fw-bold mb-3">{{ benefit.title }}</h5>
+          <p class="text-muted">{{ benefit.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process Section -->
+<section class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center mb-5">
+        <h2 class="display-5 fw-bold text-gradient">Our AI Implementation Process</h2>
+        <p class="lead text-muted">A structured approach to successful AI adoption</p>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-12">
+        <div class="process-timeline">
+          <div *ngFor="let step of processSteps; let i = index" class="timeline-item" 
+               [class.timeline-item-right]="i % 2 === 1">
+            <div class="timeline-content">
+              <div class="step-badge">{{ step.step }}</div>
+              <h5 class="fw-bold mb-2">{{ step.title }}</h5>
+              <p class="text-muted mb-2">{{ step.description }}</p>
+              <small class="text-primary fw-500">
+                <i class="fas fa-clock me-1"></i>{{ step.duration }}
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Technologies Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center mb-5">
+        <h2 class="display-5 fw-bold text-gradient">Technologies We Use</h2>
+        <p class="lead text-muted">Cutting-edge AI and automation technologies</p>
+      </div>
+    </div>
+    
+    <div class="row g-4">
+      <div *ngFor="let tech of technologies" class="col-lg-4 col-md-6">
+        <div class="tech-card d-flex align-items-center p-3 shadow-sm hover-scale">
+          <div class="tech-icon me-3">
+            <i [class]="tech.icon + ' fa-2x text-primary'"></i>
+          </div>
+          <h6 class="mb-0 fw-500">{{ tech.name }}</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Solutions Section -->
+<section class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center mb-5">
+        <h2 class="display-5 fw-bold text-gradient">Industry-Specific Solutions</h2>
+        <p class="lead text-muted">Tailored AI solutions for different industries</p>
+      </div>
+    </div>
+    
+    <div class="row g-4">
+      <div *ngFor="let solution of solutions" class="col-lg-6">
+        <div class="solution-card h-100 shadow-custom" [class]="'border-' + solution.color">
+          <div class="card-body p-4">
+            <div class="d-flex align-items-start mb-3">
+              <div class="solution-icon me-3" [class]="'bg-' + solution.color">
+                <i [class]="solution.icon + ' fa-2x text-white'"></i>
+              </div>
+              <div>
+                <h4 class="fw-bold mb-2">{{ solution.title }}</h4>
+                <p class="text-muted">{{ solution.description }}</p>
+              </div>
+            </div>
+            
+            <div class="features-grid mb-4">
+              <div *ngFor="let feature of solution.features" class="feature-item d-flex align-items-center mb-2">
+                <i class="fas fa-check-circle me-2" [class]="'text-' + solution.color"></i>
+                <span class="fw-500">{{ feature }}</span>
+              </div>
+            </div>
+            
+            <div class="solution-actions">
+              <button class="btn btn-custom me-2">
+                <i class="fas fa-info-circle me-1"></i>Learn More
+              </button>
+              <button class="btn btn-outline-primary">
+                <i class="fas fa-phone me-1"></i>Discuss Solution
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="gradient-bg py-5">
+  <div class="container">
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-8">
+        <div class="cta-content text-white">
+          <h2 class="display-5 fw-bold mb-4">Ready to Automate Your Business?</h2>
+          <p class="lead mb-4 opacity-90">
+            Let's explore how AI and automation can transform your operations and drive unprecedented growth.
+          </p>
+          <div class="cta-buttons">
+            <button class="btn btn-light btn-lg me-3 mb-2">
+              <i class="fas fa-rocket me-2"></i>Start Your AI Journey
+            </button>
+            <button class="btn btn-outline-light btn-lg mb-2">
+              <i class="fas fa-calculator me-2"></i>ROI Calculator
+            </button>
+          </div>
+          <div class="mt-4">
+            <small class="opacity-75">
+              <i class="fas fa-shield-alt me-1"></i>
+              Free consultation • No commitment required • Expert guidance
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

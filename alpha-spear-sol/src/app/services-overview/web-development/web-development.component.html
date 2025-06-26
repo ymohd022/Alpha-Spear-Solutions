@@ -1,0 +1,300 @@
+<!-- Hero Section -->
+<section class="service-hero gradient-bg">
+  <div class="container">
+    <div class="row align-items-center min-vh-100">
+      <div class="col-lg-6">
+        <div class="hero-content text-white animate-fade-in">
+          <div class="breadcrumb-nav mb-3">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/services" class="text-white-50">Services</a></li>
+                <li class="breadcrumb-item active text-white" aria-current="page">Web & Cloud Development</li>
+              </ol>
+            </nav>
+          </div>
+          <h1 class="display-4 fw-bold mb-4">
+            Web & Cloud 
+            <span class="text-warning">Development</span>
+          </h1>
+          <p class="lead mb-4 opacity-90">
+            Create powerful, scalable web applications and cloud solutions that drive business growth. 
+            From responsive websites to complex web applications, we deliver cutting-edge solutions 
+            that engage users and achieve your business objectives.
+          </p>
+          <div class="hero-buttons">
+            <button class="btn btn-custom btn-lg me-3 mb-2">
+              <i class="fas fa-rocket me-2"></i>Start Your Project
+            </button>
+            <button class="btn btn-outline-light btn-lg mb-2">
+              <i class="fas fa-eye me-2"></i>View Portfolio
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="hero-visual text-center">
+          <div class="web-animation">
+            <i class="fas fa-code fa-6x text-white opacity-75"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Benefits Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center mb-5">
+        <h2 class="display-5 fw-bold text-gradient">Why Choose Our Web Development Services?</h2>
+        <p class="lead text-muted">Comprehensive benefits that drive your digital success</p>
+      </div>
+    </div>
+    
+    <div class="row g-4">
+      <div *ngFor="let benefit of benefits" class="col-lg-4 col-md-6">
+        <div class="benefit-card h-100 text-center p-4 shadow-custom hover-scale">
+          <div class="benefit-icon mb-3">
+            <i [class]="benefit.icon + ' fa-3x text-primary'"></i>
+          </div>
+          <h5 class="fw-bold mb-3">{{ benefit.title }}</h5>
+          <p class="text-muted">{{ benefit.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process Section -->
+<section class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center mb-5">
+        <h2 class="display-5 fw-bold text-gradient">Our Development Process</h2>
+        <p class="lead text-muted">A proven methodology for successful web development projects</p>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-12">
+        <div class="process-timeline">
+          <div *ngFor="let step of processSteps; let i = index" class="timeline-item" 
+               [class.timeline-item-right]="i % 2 === 1">
+            <div class="timeline-content">
+              <div class="step-badge">{{ step.step }}</div>
+              <h5 class="fw-bold mb-2">{{ step.title }}</h5>
+              <p class="text-muted mb-3">{{ step.description }}</p>
+              <div class="step-details">
+                <div class="mb-2">
+                  <small class="text-primary fw-500">
+                    <i class="fas fa-clock me-1"></i>Duration: {{ step.duration }}
+                  </small>
+                </div>
+                <div class="deliverables">
+                  <small class="text-muted fw-500 d-block mb-1">Key Deliverables:</small>
+                  <div class="deliverable-tags">
+                    <span *ngFor="let deliverable of step.deliverables" 
+                          class="badge bg-light text-dark me-1 mb-1">{{ deliverable }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Technologies Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center mb-5">
+        <h2 class="display-5 fw-bold text-gradient">Technologies We Use</h2>
+        <p class="lead text-muted">Modern, proven technologies for robust web solutions</p>
+      </div>
+    </div>
+    
+    <div class="row g-4">
+      <div *ngFor="let tech of technologies" class="col-lg-3 col-md-4 col-sm-6">
+        <div class="tech-card d-flex align-items-center p-3 shadow-sm hover-scale">
+          <div class="tech-icon me-3">
+            <i [class]="tech.icon + ' fa-2x text-primary'"></i>
+          </div>
+          <div>
+            <h6 class="mb-0 fw-500">{{ tech.name }}</h6>
+            <small class="text-muted">{{ tech.category }}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Solutions Section -->
+<section class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center mb-5">
+        <h2 class="display-5 fw-bold text-gradient">Web Development Solutions</h2>
+        <p class="lead text-muted">Tailored solutions for different business needs and industries</p>
+      </div>
+    </div>
+    
+    <div class="row g-4">
+      <div *ngFor="let solution of solutions" class="col-lg-6">
+        <div class="solution-card h-100 shadow-custom" [class]="'border-' + solution.color">
+          <div class="card-body p-4">
+            <div class="d-flex align-items-start mb-3">
+              <div class="solution-icon me-3" [class]="'bg-' + solution.color">
+                <i [class]="solution.icon + ' fa-2x text-white'"></i>
+              </div>
+              <div class="flex-grow-1">
+                <h4 class="fw-bold mb-2">{{ solution.title }}</h4>
+                <p class="text-muted mb-3">{{ solution.description }}</p>
+                <div class="case-study-badge mb-3">
+                  <small class="text-success fw-500">
+                    <i class="fas fa-chart-line me-1"></i>{{ solution.caseStudy }}
+                  </small>
+                </div>
+              </div>
+            </div>
+            
+            <div class="features-grid mb-4">
+              <div class="row g-2">
+                <div *ngFor="let feature of solution.features" class="col-6">
+                  <div class="feature-item d-flex align-items-center">
+                    <i class="fas fa-check-circle me-2" [class]="'text-' + solution.color"></i>
+                    <small class="fw-500">{{ feature }}</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="solution-actions">
+              <button class="btn btn-custom me-2">
+                <i class="fas fa-info-circle me-1"></i>Learn More
+              </button>
+              <button class="btn btn-outline-primary">
+                <i class="fas fa-phone me-1"></i>Discuss Project
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Portfolio Preview -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center mb-5">
+        <h2 class="display-5 fw-bold text-gradient">Recent Projects</h2>
+        <p class="lead text-muted">See our web development expertise in action</p>
+      </div>
+    </div>
+    
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="portfolio-card shadow-custom hover-scale">
+          <div class="portfolio-image">
+            <div class="placeholder-image d-flex align-items-center justify-content-center bg-primary text-white">
+              <i class="fas fa-shopping-cart fa-3x opacity-75"></i>
+            </div>
+          </div>
+          <div class="card-body p-4">
+            <h5 class="fw-bold mb-2">E-Commerce Platform</h5>
+            <p class="text-muted mb-3">Modern online store with advanced features</p>
+            <div class="project-tags mb-3">
+              <span class="badge bg-primary me-1">React</span>
+              <span class="badge bg-success me-1">Node.js</span>
+              <span class="badge bg-warning">AWS</span>
+            </div>
+            <button class="btn btn-outline-primary btn-sm">
+              <i class="fas fa-external-link-alt me-1"></i>View Project
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-4 col-md-6">
+        <div class="portfolio-card shadow-custom hover-scale">
+          <div class="portfolio-image">
+            <div class="placeholder-image d-flex align-items-center justify-content-center bg-success text-white">
+              <i class="fas fa-building fa-3x opacity-75"></i>
+            </div>
+          </div>
+          <div class="card-body p-4">
+            <h5 class="fw-bold mb-2">Corporate Website</h5>
+            <p class="text-muted mb-3">Professional business website with CMS</p>
+            <div class="project-tags mb-3">
+              <span class="badge bg-info me-1">Angular</span>
+              <span class="badge bg-warning me-1">Python</span>
+              <span class="badge bg-primary">Azure</span>
+            </div>
+            <button class="btn btn-outline-primary btn-sm">
+              <i class="fas fa-external-link-alt me-1"></i>View Project
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-4 col-md-6">
+        <div class="portfolio-card shadow-custom hover-scale">
+          <div class="portfolio-image">
+            <div class="placeholder-image d-flex align-items-center justify-content-center bg-info text-white">
+              <i class="fas fa-chart-bar fa-3x opacity-75"></i>
+            </div>
+          </div>
+          <div class="card-body p-4">
+            <h5 class="fw-bold mb-2">Analytics Dashboard</h5>
+            <p class="text-muted mb-3">Real-time data visualization platform</p>
+            <div class="project-tags mb-3">
+              <span class="badge bg-success me-1">Vue.js</span>
+              <span class="badge bg-primary me-1">Express</span>
+              <span class="badge bg-warning">GCP</span>
+            </div>
+            <button class="btn btn-outline-primary btn-sm">
+              <i class="fas fa-external-link-alt me-1"></i>View Project
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="gradient-bg py-5">
+  <div class="container">
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-8">
+        <div class="cta-content text-white">
+          <h2 class="display-5 fw-bold mb-4">Ready to Build Your Web Solution?</h2>
+          <p class="lead mb-4 opacity-90">
+            Let's create a powerful web presence that drives your business forward. 
+            Our expert team is ready to bring your vision to life.
+          </p>
+          <div class="cta-buttons">
+            <button class="btn btn-light btn-lg me-3 mb-2">
+              <i class="fas fa-rocket me-2"></i>Start Your Project
+            </button>
+            <button class="btn btn-outline-light btn-lg mb-2">
+              <i class="fas fa-calculator me-2"></i>Get Cost Estimate
+            </button>
+          </div>
+          <div class="mt-4">
+            <small class="opacity-75">
+              <i class="fas fa-shield-alt me-1"></i>
+              Free consultation • Project planning included • 30-day support guarantee
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

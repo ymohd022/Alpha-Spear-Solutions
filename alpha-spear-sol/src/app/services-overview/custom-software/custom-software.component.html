@@ -1,0 +1,290 @@
+<!-- Hero Section -->
+<section class="service-hero gradient-bg">
+  <div class="container">
+    <div class="row align-items-center min-vh-100">
+      <div class="col-lg-6">
+        <div class="hero-content text-white animate-fade-in">
+          <div class="breadcrumb-nav mb-3">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/services" class="text-white-50">Services</a></li>
+                <li class="breadcrumb-item active text-white" aria-current="page">Custom Software</li>
+              </ol>
+            </nav>
+          </div>
+          <h1 class="display-4 fw-bold mb-4">
+            Custom Software 
+            <span class="text-warning">Development</span>
+          </h1>
+          <p class="lead mb-4 opacity-90">
+            Get software that fits your business like a glove. Our custom development services 
+            create tailored solutions that address your unique challenges, integrate seamlessly 
+            with your existing systems, and scale with your growth.
+          </p>
+          <div class="hero-buttons">
+            <button class="btn btn-custom btn-lg me-3 mb-2">
+              <i class="fas fa-lightbulb me-2"></i>Discuss Your Idea
+            </button>
+            <button class="btn btn-outline-light btn-lg mb-2">
+              <i class="fas fa-file-alt me-2"></i>View Case Studies
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="hero-visual text-center">
+          <div class="software-animation">
+            <i class="fas fa-laptop-code fa-6x text-white opacity-75"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Benefits Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center mb-5">
+        <h2 class="display-5 fw-bold text-gradient">Why Choose Custom Software?</h2>
+        <p class="lead text-muted">Advantages of tailored software solutions over off-the-shelf products</p>
+      </div>
+    </div>
+    
+    <div class="row g-4">
+      <div *ngFor="let benefit of benefits" class="col-lg-4 col-md-6">
+        <div class="benefit-card h-100 text-center p-4 shadow-custom hover-scale">
+          <div class="benefit-icon mb-3">
+            <i [class]="benefit.icon + ' fa-3x text-primary'"></i>
+          </div>
+          <h5 class="fw-bold mb-3">{{ benefit.title }}</h5>
+          <p class="text-muted">{{ benefit.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Industries Section -->
+<section class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center mb-5">
+        <h2 class="display-5 fw-bold text-gradient">Industries We Serve</h2>
+        <p class="lead text-muted">Specialized expertise across various industry verticals</p>
+      </div>
+    </div>
+    
+    <div class="row g-4">
+      <div *ngFor="let industry of industries" class="col-lg-4 col-md-6">
+        <div class="industry-card h-100 p-4 shadow-custom hover-scale">
+          <div class="d-flex align-items-start">
+            <div class="industry-icon me-3">
+              <i [class]="industry.icon + ' fa-2x text-primary'"></i>
+            </div>
+            <div>
+              <h5 class="fw-bold mb-2">{{ industry.name }}</h5>
+              <p class="text-muted mb-0">{{ industry.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center mb-5">
+        <h2 class="display-5 fw-bold text-gradient">Our Development Process</h2>
+        <p class="lead text-muted">Agile methodology ensuring quality and timely delivery</p>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-12">
+        <div class="process-timeline">
+          <div *ngFor="let step of processSteps; let i = index" class="timeline-item" 
+               [class.timeline-item-right]="i % 2 === 1">
+            <div class="timeline-content">
+              <div class="step-badge">{{ step.step }}</div>
+              <h5 class="fw-bold mb-2">{{ step.title }}</h5>
+              <p class="text-muted mb-3">{{ step.description }}</p>
+              <div class="step-details">
+                <div class="mb-2">
+                  <small class="text-primary fw-500">
+                    <i class="fas fa-clock me-1"></i>Duration: {{ step.duration }}
+                  </small>
+                </div>
+                <div class="deliverables">
+                  <small class="text-muted fw-500 d-block mb-1">Key Deliverables:</small>
+                  <div class="deliverable-tags">
+                    <span *ngFor="let deliverable of step.deliverables" 
+                          class="badge bg-light text-dark me-1 mb-1">{{ deliverable }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Technologies Section -->
+<section class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center mb-5">
+        <h2 class="display-5 fw-bold text-gradient">Technologies We Master</h2>
+        <p class="lead text-muted">Cutting-edge technologies for robust software solutions</p>
+      </div>
+    </div>
+    
+    <div class="row g-4">
+      <div *ngFor="let tech of technologies" class="col-lg-3 col-md-4 col-sm-6">
+        <div class="tech-card d-flex align-items-center p-3 shadow-sm hover-scale">
+          <div class="tech-icon me-3">
+            <i [class]="tech.icon + ' fa-2x text-primary'"></i>
+          </div>
+          <div>
+            <h6 class="mb-0 fw-500">{{ tech.name }}</h6>
+            <small class="text-muted">{{ tech.category }}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Solutions Section -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center mb-5">
+        <h2 class="display-5 fw-bold text-gradient">Custom Software Solutions</h2>
+        <p class="lead text-muted">Specialized solutions for different business needs and challenges</p>
+      </div>
+    </div>
+    
+    <div class="row g-4">
+      <div *ngFor="let solution of solutions" class="col-lg-6">
+        <div class="solution-card h-100 shadow-custom" [class]="'border-' + solution.color">
+          <div class="card-body p-4">
+            <div class="d-flex align-items-start mb-3">
+              <div class="solution-icon me-3" [class]="'bg-' + solution.color">
+                <i [class]="solution.icon + ' fa-2x text-white'"></i>
+              </div>
+              <div class="flex-grow-1">
+                <h4 class="fw-bold mb-2">{{ solution.title }}</h4>
+                <p class="text-muted mb-3">{{ solution.description }}</p>
+                <div class="case-study-badge mb-3">
+                  <small class="text-success fw-500">
+                    <i class="fas fa-chart-line me-1"></i>{{ solution.caseStudy }}
+                  </small>
+                </div>
+              </div>
+            </div>
+            
+            <div class="features-grid mb-4">
+              <div class="row g-2">
+                <div *ngFor="let feature of solution.features" class="col-6">
+                  <div class="feature-item d-flex align-items-center">
+                    <i class="fas fa-check-circle me-2" [class]="'text-' + solution.color"></i>
+                    <small class="fw-500">{{ feature }}</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="solution-actions">
+              <button class="btn btn-custom me-2">
+                <i class="fas fa-info-circle me-1"></i>Learn More
+              </button>
+              <button class="btn btn-outline-primary">
+                <i class="fas fa-comments me-1"></i>Discuss Requirements
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Development Approach -->
+<section class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center mb-5">
+        <h2 class="display-5 fw-bold text-gradient">Our Development Approach</h2>
+        <p class="lead text-muted">Proven methodologies for successful software delivery</p>
+      </div>
+    </div>
+    
+    <div class="row g-4">
+      <div class="col-lg-4 text-center">
+        <div class="approach-card p-4 shadow-custom">
+          <div class="approach-icon mb-3">
+            <i class="fas fa-sync-alt fa-3x text-primary"></i>
+          </div>
+          <h5 class="fw-bold mb-3">Agile Development</h5>
+          <p class="text-muted">Iterative development with regular feedback and continuous improvement</p>
+        </div>
+      </div>
+      <div class="col-lg-4 text-center">
+        <div class="approach-card p-4 shadow-custom">
+          <div class="approach-icon mb-3">
+            <i class="fas fa-users fa-3x text-success"></i>
+          </div>
+          <h5 class="fw-bold mb-3">Collaborative Process</h5>
+          <p class="text-muted">Close collaboration with your team throughout the development lifecycle</p>
+        </div>
+      </div>
+      <div class="col-lg-4 text-center">
+        <div class="approach-card p-4 shadow-custom">
+          <div class="approach-icon mb-3">
+            <i class="fas fa-shield-alt fa-3x text-warning"></i>
+          </div>
+          <h5 class="fw-bold mb-3">Quality Assurance</h5>
+          <p class="text-muted">Rigorous testing and quality control at every stage of development</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="gradient-bg py-5">
+  <div class="container">
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-8">
+        <div class="cta-content text-white">
+          <h2 class="display-5 fw-bold mb-4">Ready to Build Your Custom Solution?</h2>
+          <p class="lead mb-4 opacity-90">
+            Transform your business with software that's built specifically for your needs. 
+            Let's discuss your requirements and create a solution that drives your success.
+          </p>
+          <div class="cta-buttons">
+            <button class="btn btn-light btn-lg me-3 mb-2">
+              <i class="fas fa-lightbulb me-2"></i>Start Your Project
+            </button>
+            <button class="btn btn-outline-light btn-lg mb-2">
+              <i class="fas fa-calculator me-2"></i>Get Project Estimate
+            </button>
+          </div>
+          <div class="mt-4">
+            <small class="opacity-75">
+              <i class="fas fa-shield-alt me-1"></i>
+              Free consultation • Detailed project proposal • Flexible engagement models
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

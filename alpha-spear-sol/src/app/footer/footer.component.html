@@ -56,7 +56,7 @@
           </h6>
           <ul class="list-unstyled">
             <li *ngFor="let service of services" class="mb-2">
-              <a [href]="service.url" class="footer-link">
+              <a routerLink="{{ service.url }}" class="footer-link">
                 <i class="fas fa-chevron-right me-2"></i>{{ service.name }}
               </a>
             </li>
