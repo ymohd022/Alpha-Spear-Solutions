@@ -1,0 +1,266 @@
+.video-tabs {
+  background: white;
+  border-radius: 50px;
+  padding: 0.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.video-tabs .nav-link {
+  border-radius: 50px;
+  border: none;
+  color: var(--text-dark);
+  font-weight: 500;
+  padding: 1rem 2rem;
+  transition: all 0.3s ease;
+}
+
+.video-tabs .nav-link:hover {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--secondary-blue);
+}
+
+.video-tabs .nav-link.active {
+  background: linear-gradient(135deg, var(--secondary-blue), var(--accent-cyan));
+  color: white;
+  box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+}
+
+.featured-video {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.featured-video:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+.video-thumbnail {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.video-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.featured-video:hover .video-thumbnail img {
+  transform: scale(1.1);
+}
+
+.play-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.video-thumbnail:hover .play-overlay {
+  opacity: 1;
+}
+
+.play-button {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--secondary-blue);
+  transition: transform 0.3s ease;
+}
+
+.play-button:hover {
+  transform: scale(1.1);
+}
+
+.video-duration {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.video-category {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.video-category-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+.search-box .input-group-text {
+  border-right: none;
+}
+
+.search-box .form-control {
+  border-left: none;
+}
+
+.search-box .form-control:focus {
+  box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
+  border-color: var(--secondary-blue);
+}
+
+.category-pills .btn.active {
+  background: linear-gradient(135deg, var(--secondary-blue), var(--accent-cyan));
+  border-color: var(--secondary-blue);
+  color: white;
+}
+
+.video-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+.video-card .video-thumbnail {
+  height: 180px;
+}
+
+.video-card:hover .video-thumbnail img {
+  transform: scale(1.1);
+}
+
+.video-tags .badge {
+  font-size: 0.7rem;
+  border: 1px solid #dee2e6;
+}
+
+.webinar-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.webinar-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+.webinar-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.webinar-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.webinar-card:hover .webinar-image img {
+  transform: scale(1.1);
+}
+
+.webinar-date {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.date-badge {
+  background: white;
+  border-radius: 8px;
+  padding: 0.5rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  min-width: 50px;
+}
+
+.date-day {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--secondary-blue);
+  line-height: 1;
+}
+
+.date-month {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+}
+
+.registration-progress {
+  margin-bottom: 1rem;
+}
+
+.registration-progress .progress {
+  border-radius: 10px;
+  background: #e9ecef;
+}
+
+.registration-progress .progress-bar {
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .video-tabs .nav-link {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .featured-video .video-thumbnail {
+    height: 160px;
+  }
+
+  .video-card .video-thumbnail {
+    height: 140px;
+  }
+
+  .webinar-image {
+    height: 160px;
+  }
+
+  .category-pills .btn {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .date-badge {
+    min-width: 40px;
+    padding: 0.25rem;
+  }
+
+  .date-day {
+    font-size: 1rem;
+  }
+
+  .date-month {
+    font-size: 0.7rem;
+  }
+}

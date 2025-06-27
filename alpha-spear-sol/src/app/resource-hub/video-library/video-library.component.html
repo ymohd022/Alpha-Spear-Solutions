@@ -1,0 +1,222 @@
+<section class="py-5">
+  <div class="container">
+    <!-- Video Library Tabs -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <ul class="nav nav-pills justify-content-center video-tabs">
+          <li class="nav-item">
+            <button class="nav-link" [class.active]="activeTab === 'library'" 
+                    (click)="setActiveTab('library')">
+              <i class="fas fa-video me-2"></i>Video Library
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" [class.active]="activeTab === 'webinars'" 
+                    (click)="setActiveTab('webinars')">
+              <i class="fas fa-calendar-alt me-2"></i>Upcoming Webinars
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Video Library Content -->
+    <div *ngIf="activeTab === 'library'">
+      <!-- Featured Videos -->
+      <div class="row mb-5">
+        <div class="col-12">
+          <h2 class="display-6 fw-bold text-gradient mb-4">Featured Videos</h2>
+        </div>
+        <div *ngFor="let video of featuredVideos" class="col-lg-4 col-md-6 mb-4">
+          <div class="featured-video shadow-custom hover-scale">
+            <div class="video-thumbnail" (click)="playVideo(video)">
+              <img [src]="video.thumbnail" [alt]="video.title" class="img-fluid">
+              <div class="play-overlay">
+                <div class="play-button">
+                  <i class="fas fa-play fa-2x"></i>
+                </div>
+              </div>
+              <div class="video-duration">
+                <span class="badge bg-dark">{{ video.duration }}</span>
+              </div>
+              <div class="video-category">
+                <span class="badge bg-warning">Featured</span>
+              </div>
+            </div>
+            <div class="video-content p-4">
+              <div class="video-meta mb-2">
+                <span class="badge me-2" [class]="'bg-' + getCategoryColor(video.category)">
+                  {{ video.category | titlecase }}
+                </span>
+                <small class="text-muted">{{ video.views | number }} views • {{ video.date | date:'MMM dd, yyyy' }}</small>
+              </div>
+              <h5 class="fw-bold mb-3">{{ video.title }}</h5>
+              <p class="text-muted mb-3">{{ video.description }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="speaker-info">
+                  <small class="text-muted">By {{ video.speaker }}</small>
+                </div>
+                <button class="btn btn-custom btn-sm" (click)="playVideo(video)">
+                  <i class="fas fa-play me-1"></i>Watch
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search and Filter -->
+      <div class="row mb-4">
+        <div class="col-lg-8">
+          <div class="search-box">
+            <div class="input-group">
+              <span class="input-group-text bg-white border-end-0">
+                <i class="fas fa-search text-muted"></i>
+              </span>
+              <input type="text" class="form-control border-start-0" 
+                     placeholder="Search videos, topics, or speakers..." 
+                     [(ngModel)]="searchTerm">
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="category-filter">
+            <select class="form-select" [(ngModel)]="selectedCategory" (change)="selectCategory(selectedCategory)">
+              <option *ngFor="let category of videoCategories" [value]="category.id">
+                {{ category.name }} ({{ category.count }})
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category Pills -->
+      <div class="row mb-4">
+        <div class="col-12">
+          <div class="category-pills">
+            <button *ngFor="let category of videoCategories" 
+                    class="btn btn-outline-primary me-2 mb-2"
+                    [class.active]="selectedCategory === category.id"
+                    (click)="selectCategory(category.id)">
+              <i [class]="getCategoryIcon(category.id) + ' me-1'" *ngIf="category.id !== 'all'"></i>
+              {{ category.name }}
+              <span class="badge bg-light text-dark ms-1">{{ category.count }}</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Videos Grid -->
+      <div class="row g-4">
+        <div *ngFor="let video of filteredVideos" class="col-lg-4 col-md-6">
+          <div class="video-card h-100 shadow-custom hover-scale">
+            <div class="video-thumbnail" (click)="playVideo(video)">
+              <img [src]="video.thumbnail" [alt]="video.title" class="img-fluid">
+              <div class="play-overlay">
+                <div class="play-button">
+                  <i class="fas fa-play"></i>
+                </div>
+              </div>
+              <div class="video-duration">
+                <span class="badge bg-dark">{{ video.duration }}</span>
+              </div>
+              <div class="video-category-badge">
+                <span class="badge" [class]="'bg-' + getCategoryColor(video.category)">
+                  <i [class]="getCategoryIcon(video.category) + ' me-1'"></i>
+                  {{ video.category | titlecase }}
+                </span>
+              </div>
+            </div>
+            <div class="card-body p-4">
+              <div class="video-meta mb-2">
+                <small class="text-muted">{{ video.views | number }} views • {{ video.date | date:'MMM dd, yyyy' }}</small>
+              </div>
+              <h5 class="fw-bold mb-3">{{ video.title }}</h5>
+              <p class="text-muted mb-3">{{ video.description }}</p>
+              <div class="video-tags mb-3">
+                <span *ngFor="let tag of video.tags" class="badge bg-light text-dark me-1 mb-1">{{ tag }}</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="speaker-info">
+                  <small class="text-muted">By {{ video.speaker }}</small>
+                </div>
+                <button class="btn btn-custom btn-sm" (click)="playVideo(video)">
+                  <i class="fas fa-play me-1"></i>Watch
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Upcoming Webinars Content -->
+    <div *ngIf="activeTab === 'webinars'">
+      <div class="row">
+        <div class="col-12 mb-4">
+          <h2 class="display-6 fw-bold text-gradient">Upcoming Webinars</h2>
+          <p class="lead text-muted">Join our experts for live sessions on the latest technology trends and best practices.</p>
+        </div>
+      </div>
+      
+      <div class="row g-4">
+        <div *ngFor="let webinar of upcomingWebinars" class="col-lg-4 col-md-6">
+          <div class="webinar-card h-100 shadow-custom hover-scale">
+            <div class="webinar-image">
+              <img [src]="webinar.thumbnail" [alt]="webinar.title" class="img-fluid">
+              <div class="webinar-date">
+                <div class="date-badge">
+                  <div class="date-day">{{ webinar.date | date:'dd' }}</div>
+                  <div class="date-month">{{ webinar.date | date:'MMM' }}</div>
+                </div>
+              </div>
+            </div>
+            <div class="card-body p-4">
+              <div class="webinar-meta mb-3">
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="badge bg-success">
+                    <i class="fas fa-calendar me-1"></i>Upcoming
+                  </span>
+                  <small class="text-muted">{{ webinar.duration }}</small>
+                </div>
+              </div>
+              <h5 class="fw-bold mb-3">{{ webinar.title }}</h5>
+              <p class="text-muted mb-3">{{ webinar.description }}</p>
+              
+              <div class="webinar-details mb-3">
+                <div class="detail-item mb-2">
+                  <i class="fas fa-clock text-primary me-2"></i>
+                  <small>{{ webinar.date | date:'MMM dd, yyyy' }} at {{ webinar.time }}</small>
+                </div>
+                <div class="detail-item mb-2">
+                  <i class="fas fa-user text-primary me-2"></i>
+                  <small>{{ webinar.speaker }} - {{ webinar.speakerTitle }}</small>
+                </div>
+                <div class="detail-item mb-2">
+                  <i class="fas fa-users text-primary me-2"></i>
+                  <small>{{ webinar.registrations }}/{{ webinar.maxCapacity }} registered</small>
+                </div>
+              </div>
+              
+              <div class="webinar-tags mb-3">
+                <span *ngFor="let tag of webinar.tags" class="badge bg-light text-dark me-1 mb-1">{{ tag }}</span>
+              </div>
+              
+              <div class="registration-progress mb-3">
+                <div class="progress" style="height: 4px;">
+                  <div class="progress-bar bg-success" 
+                       [style.width.%]="(webinar.registrations / webinar.maxCapacity) * 100"></div>
+                </div>
+                <small class="text-muted">{{ ((webinar.registrations / webinar.maxCapacity) * 100) | number:'1.0-0' }}% full</small>
+              </div>
+              
+              <button class="btn btn-custom w-100" (click)="registerForWebinar(webinar)">
+                <i class="fas fa-user-plus me-2"></i>Register Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

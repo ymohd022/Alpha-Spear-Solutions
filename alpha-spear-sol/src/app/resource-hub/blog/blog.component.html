@@ -1,0 +1,134 @@
+<section class="py-5">
+  <div class="container">
+    <!-- Featured Posts -->
+    <div class="row mb-5">
+      <div class="col-12">
+        <h2 class="display-6 fw-bold text-gradient mb-4">Featured Articles</h2>
+      </div>
+      <div *ngFor="let post of featuredPosts" class="col-lg-6 mb-4">
+        <div class="featured-post shadow-custom hover-scale">
+          <div class="post-image">
+            <img [src]="post.image" [alt]="post.title" class="img-fluid">
+            <div class="post-overlay">
+              <span class="badge bg-primary">Featured</span>
+            </div>
+          </div>
+          <div class="post-content p-4">
+            <div class="post-meta mb-2">
+              <span class="badge bg-light text-dark me-2">{{ post.category | titlecase }}</span>
+              <small class="text-muted">{{ post.date | date:'MMM dd, yyyy' }} • {{ post.readTime }}</small>
+            </div>
+            <h4 class="fw-bold mb-3">{{ post.title }}</h4>
+            <p class="text-muted mb-3">{{ post.excerpt }}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="author-info">
+                <small class="text-muted">By {{ post.author }}</small>
+              </div>
+              <button class="btn btn-outline-primary btn-sm">
+                <i class="fas fa-arrow-right me-1"></i>Read More
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search and Filter -->
+    <div class="row mb-4">
+      <div class="col-lg-8">
+        <div class="search-box">
+          <div class="input-group">
+            <span class="input-group-text bg-white border-end-0">
+              <i class="fas fa-search text-muted"></i>
+            </span>
+            <input type="text" class="form-control border-start-0" 
+                   placeholder="Search articles, topics, or tags..." 
+                   [(ngModel)]="searchTerm" (input)="onSearch()">
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="category-filter">
+          <select class="form-select" [(ngModel)]="selectedCategory" (change)="selectCategory(selectedCategory)">
+            <option *ngFor="let category of categories" [value]="category.id">
+              {{ category.name }} ({{ category.count }})
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Pills -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="category-pills">
+          <button *ngFor="let category of categories" 
+                  class="btn btn-outline-primary me-2 mb-2"
+                  [class.active]="selectedCategory === category.id"
+                  (click)="selectCategory(category.id)">
+            {{ category.name }}
+            <span class="badge bg-light text-dark ms-1">{{ category.count }}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog Posts Grid -->
+    <div class="row g-4 mb-5">
+      <div *ngFor="let post of paginatedPosts" class="col-lg-4 col-md-6">
+        <div class="blog-card h-100 shadow-custom hover-scale">
+          <div class="post-image">
+            <img [src]="post.image" [alt]="post.title" class="img-fluid">
+            <div class="post-category">
+              <span class="badge" [class]="'bg-' + (post.category === 'tech' ? 'primary' : post.category === 'ai' ? 'success' : 'warning')">
+                {{ post.category | titlecase }}
+              </span>
+            </div>
+          </div>
+          <div class="card-body p-4">
+            <div class="post-meta mb-2">
+              <small class="text-muted">{{ post.date | date:'MMM dd, yyyy' }} • {{ post.readTime }}</small>
+            </div>
+            <h5 class="fw-bold mb-3">{{ post.title }}</h5>
+            <p class="text-muted mb-3">{{ post.excerpt }}</p>
+            <div class="post-tags mb-3">
+              <span *ngFor="let tag of post.tags" class="badge bg-light text-dark me-1 mb-1">{{ tag }}</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="author-info">
+                <small class="text-muted">By {{ post.author }}</small>
+              </div>
+              <button class="btn btn-custom btn-sm">
+                <i class="fas fa-arrow-right me-1"></i>Read
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="row" *ngIf="totalPages > 1">
+      <div class="col-12">
+        <nav aria-label="Blog pagination">
+          <ul class="pagination justify-content-center">
+            <li class="page-item" [class.disabled]="currentPage === 1">
+              <button class="page-link" (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+            </li>
+            <li *ngFor="let page of getPaginationArray()" 
+                class="page-item" [class.active]="currentPage === page">
+              <button class="page-link" (click)="goToPage(page)">{{ page }}</button>
+            </li>
+            <li class="page-item" [class.disabled]="currentPage === totalPages">
+              <button class="page-link" (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>

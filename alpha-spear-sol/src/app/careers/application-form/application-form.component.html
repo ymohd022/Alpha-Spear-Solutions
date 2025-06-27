@@ -1,0 +1,282 @@
+<div class="application-form">
+  <!-- Position Info -->
+  <div class="position-info mb-4 p-3 bg-light rounded">
+    <h6 class="fw-bold mb-1">Applying for: {{ position?.title }}</h6>
+    <small class="text-muted">
+      <i class="fas fa-building me-1"></i>{{ position?.department | titlecase }} • 
+      <i class="fas fa-map-marker-alt me-1"></i>{{ position?.location | titlecase }}
+    </small>
+  </div>
+
+  <!-- Progress Steps -->
+  <div class="form-progress mb-4">
+    <div class="progress-steps">
+      <div *ngFor="let step of formSteps" 
+           class="progress-step" 
+           [class.completed]="isStepCompleted(step.step)"
+           [class.active]="isStepActive(step.step)"
+           (click)="goToStep(step.step)">
+        <div class="step-circle">
+          <i [class]="getStepIcon(step.step)" *ngIf="!isStepCompleted(step.step)"></i>
+          <i class="fas fa-check" *ngIf="isStepCompleted(step.step)"></i>
+        </div>
+        <span class="step-label">{{ step.title }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Form Content -->
+  <form (ngSubmit)="submitApplication()" #applicationForm="ngForm">
+    
+    <!-- Step 1: Personal Information -->
+    <div *ngIf="currentStep === 1" class="form-step">
+      <h5 class="fw-bold mb-4">Personal Information</h5>
+      
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">First Name *</label>
+          <input type="text" class="form-control" [(ngModel)]="applicationData.personalInfo.firstName" 
+                 name="firstName" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Last Name *</label>
+          <input type="text" class="form-control" [(ngModel)]="applicationData.personalInfo.lastName" 
+                 name="lastName" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Email Address *</label>
+          <input type="email" class="form-control" [(ngModel)]="applicationData.personalInfo.email" 
+                 name="email" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Phone Number *</label>
+          <input type="tel" class="form-control" [(ngModel)]="applicationData.personalInfo.phone" 
+                 name="phone" required>
+        </div>
+        <div class="col-12">
+          <label class="form-label">Address</label>
+          <input type="text" class="form-control" [(ngModel)]="applicationData.personalInfo.address" 
+                 name="address">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">City</label>
+          <input type="text" class="form-control" [(ngModel)]="applicationData.personalInfo.city" 
+                 name="city">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">State</label>
+          <input type="text" class="form-control" [(ngModel)]="applicationData.personalInfo.state" 
+                 name="state">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Zip Code</label>
+          <input type="text" class="form-control" [(ngModel)]="applicationData.personalInfo.zipCode" 
+                 name="zipCode">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">LinkedIn Profile</label>
+          <input type="url" class="form-control" [(ngModel)]="applicationData.personalInfo.linkedIn" 
+                 name="linkedIn" placeholder="https://linkedin.com/in/yourprofile">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Portfolio/Website</label>
+          <input type="url" class="form-control" [(ngModel)]="applicationData.personalInfo.portfolio" 
+                 name="portfolio" placeholder="https://yourportfolio.com">
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Experience & Skills -->
+    <div *ngIf="currentStep === 2" class="form-step">
+      <h5 class="fw-bold mb-4">Experience & Skills</h5>
+      
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">Current Role</label>
+          <input type="text" class="form-control" [(ngModel)]="applicationData.experience.currentRole" 
+                 name="currentRole">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Current Company</label>
+          <input type="text" class="form-control" [(ngModel)]="applicationData.experience.currentCompany" 
+                 name="currentCompany">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Years of Experience *</label>
+          <select class="form-select" [(ngModel)]="applicationData.experience.yearsExperience" 
+                  name="yearsExperience" required>
+            <option value="">Select experience level</option>
+            <option value="0-1">0-1 years</option>
+            <option value="1-3">1-3 years</option>
+            <option value="3-5">3-5 years</option>
+            <option value="5-10">5-10 years</option>
+            <option value="10+">10+ years</option>
+          </select>
+        </div>
+        <div class="col-12">
+          <label class="form-label">Relevant Skills & Technologies *</label>
+          <textarea class="form-control" rows="4" [(ngModel)]="applicationData.experience.relevantSkills" 
+                    name="relevantSkills" required
+                    placeholder="List your relevant technical skills, programming languages, frameworks, tools, etc."></textarea>
+        </div>
+        <div class="col-12">
+          <label class="form-label">Previous Roles & Experience</label>
+          <textarea class="form-control" rows="4" [(ngModel)]="applicationData.experience.previousRoles" 
+                    name="previousRoles"
+                    placeholder="Briefly describe your previous work experience and key achievements"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: Education -->
+    <div *ngIf="currentStep === 3" class="form-step">
+      <h5 class="fw-bold mb-4">Education</h5>
+      
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">Highest Degree *</label>
+          <select class="form-select" [(ngModel)]="applicationData.education.degree" 
+                  name="degree" required>
+            <option value="">Select degree</option>
+            <option value="high-school">High School Diploma</option>
+            <option value="associate">Associate Degree</option>
+            <option value="bachelor">Bachelor's Degree</option>
+            <option value="master">Master's Degree</option>
+            <option value="phd">PhD</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Major/Field of Study</label>
+          <input type="text" class="form-control" [(ngModel)]="applicationData.education.major" 
+                 name="major">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">University/Institution *</label>
+          <input type="text" class="form-control" [(ngModel)]="applicationData.education.university" 
+                 name="university" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Graduation Year</label>
+          <input type="number" class="form-control" [(ngModel)]="applicationData.education.graduationYear" 
+                 name="graduationYear" min="1950" max="2030">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">GPA (Optional)</label>
+          <input type="number" class="form-control" [(ngModel)]="applicationData.education.gpa" 
+                 name="gpa" step="0.01" min="0" max="4">
+        </div>
+        <div class="col-12">
+          <label class="form-label">Relevant Coursework</label>
+          <textarea class="form-control" rows="3" [(ngModel)]="applicationData.education.relevantCoursework" 
+                    name="relevantCoursework"
+                    placeholder="List relevant courses, projects, or academic achievements"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4: Application Details -->
+    <div *ngIf="currentStep === 4" class="form-step">
+      <h5 class="fw-bold mb-4">Application Details</h5>
+      
+      <div class="row g-3">
+        <div class="col-12">
+          <label class="form-label">Why are you interested in this position? *</label>
+          <textarea class="form-control" rows="4" [(ngModel)]="applicationData.application.whyInterested" 
+                    name="whyInterested" required
+                    placeholder="Tell us what excites you about this role and our company"></textarea>
+        </div>
+        <div class="col-12">
+          <label class="form-label">Cover Letter</label>
+          <textarea class="form-control" rows="6" [(ngModel)]="applicationData.application.coverLetter" 
+                    name="coverLetter"
+                    placeholder="Write your cover letter here or upload a file below"></textarea>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Availability</label>
+          <select class="form-select" [(ngModel)]="applicationData.application.availability" 
+                  name="availability">
+            <option value="">Select availability</option>
+            <option value="immediate">Immediately</option>
+            <option value="2-weeks">2 weeks notice</option>
+            <option value="1-month">1 month</option>
+            <option value="flexible">Flexible</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Salary Expectations</label>
+          <input type="text" class="form-control" [(ngModel)]="applicationData.application.salaryExpectations" 
+                 name="salaryExpectations" placeholder="e.g., $70,000 - $80,000">
+        </div>
+        
+        <!-- File Uploads -->
+        <div class="col-12">
+          <h6 class="fw-bold mt-3 mb-3">Document Uploads</h6>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Resume/CV *</label>
+          <input type="file" class="form-control" (change)="onFileSelected($event, 'resume')" 
+                 accept=".pdf,.doc,.docx" required>
+          <small class="text-muted">PDF, DOC, or DOCX format</small>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Cover Letter File</label>
+          <input type="file" class="form-control" (change)="onFileSelected($event, 'coverLetterFile')" 
+                 accept=".pdf,.doc,.docx">
+          <small class="text-muted">PDF, DOC, or DOCX format</small>
+        </div>
+        <div class="col-md-6" *ngIf="position?.department === 'design'">
+          <label class="form-label">Portfolio</label>
+          <input type="file" class="form-control" (change)="onFileSelected($event, 'portfolio')" 
+                 accept=".pdf,.zip">
+          <small class="text-muted">PDF or ZIP format</small>
+        </div>
+        <div class="col-md-6" *ngIf="position?.duration">
+          <label class="form-label">Transcript (Internships)</label>
+          <input type="file" class="form-control" (change)="onFileSelected($event, 'transcript')" 
+                 accept=".pdf">
+          <small class="text-muted">PDF format</small>
+        </div>
+        
+        <div class="col-12">
+          <label class="form-label">References</label>
+          <textarea class="form-control" rows="3" [(ngModel)]="applicationData.application.references" 
+                    name="references"
+                    placeholder="Provide contact information for 2-3 professional references"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Navigation -->
+    <div class="form-navigation mt-4 pt-3 border-top">
+      <div class="d-flex justify-content-between">
+        <button type="button" class="btn btn-outline-secondary" 
+                (click)="previousStep()" [disabled]="currentStep === 1">
+          <i class="fas fa-arrow-left me-2"></i>Previous
+        </button>
+        
+        <div class="step-indicator">
+          Step {{ currentStep }} of {{ totalSteps }}
+        </div>
+        
+        <button type="button" class="btn btn-primary" 
+                (click)="nextStep()" 
+                [disabled]="currentStep === totalSteps || !validateCurrentStep()"
+                *ngIf="currentStep < totalSteps">
+          Next<i class="fas fa-arrow-right ms-2"></i>
+        </button>
+        
+        <button type="submit" class="btn btn-success" 
+                [disabled]="!validateCurrentStep() || isSubmitting"
+                *ngIf="currentStep === totalSteps">
+          <span *ngIf="!isSubmitting">
+            <i class="fas fa-paper-plane me-2"></i>Submit Application
+          </span>
+          <span *ngIf="isSubmitting">
+            <i class="fas fa-spinner fa-spin me-2"></i>Submitting...
+          </span>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

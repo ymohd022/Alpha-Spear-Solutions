@@ -1,0 +1,123 @@
+<section class="py-5">
+  <div class="container">
+    <!-- Featured Downloads -->
+    <div class="row mb-5">
+      <div class="col-12">
+        <h2 class="display-6 fw-bold text-gradient mb-4">Featured Resources</h2>
+      </div>
+      <div *ngFor="let asset of featuredAssets" class="col-lg-4 col-md-6 mb-4">
+        <div class="featured-download shadow-custom hover-scale">
+          <div class="download-image">
+            <img [src]="asset.image" [alt]="asset.title" class="img-fluid">
+            <div class="download-overlay">
+              <span class="badge bg-warning">Featured</span>
+            </div>
+            <div class="download-type">
+              <i [class]="getTypeIcon(asset.type) + ' fa-2x text-white'"></i>
+            </div>
+          </div>
+          <div class="download-content p-4">
+            <div class="download-meta mb-2">
+              <span class="badge me-2" [class]="'bg-' + getTypeColor(asset.type)">
+                {{ asset.type | titlecase }}
+              </span>
+              <small class="text-muted">{{ asset.fileType }} • {{ asset.fileSize }}</small>
+            </div>
+            <h5 class="fw-bold mb-3">{{ asset.title }}</h5>
+            <p class="text-muted mb-3">{{ asset.description }}</p>
+            <div class="download-stats mb-3">
+              <small class="text-muted">
+                <i class="fas fa-download me-1"></i>{{ asset.downloads }} downloads
+                <span *ngIf="asset.pages" class="ms-3">
+                  <i class="fas fa-file-alt me-1"></i>{{ asset.pages }} pages
+                </span>
+              </small>
+            </div>
+            <button class="btn btn-custom w-100" (click)="downloadAsset(asset)">
+              <i class="fas fa-download me-2"></i>Download Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search and Filter -->
+    <div class="row mb-4">
+      <div class="col-lg-8">
+        <div class="search-box">
+          <div class="input-group">
+            <span class="input-group-text bg-white border-end-0">
+              <i class="fas fa-search text-muted"></i>
+            </span>
+            <input type="text" class="form-control border-start-0" 
+                   placeholder="Search resources, topics, or file types..." 
+                   [(ngModel)]="searchTerm">
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="type-filter">
+          <select class="form-select" [(ngModel)]="selectedType" (change)="selectType(selectedType)">
+            <option *ngFor="let type of assetTypes" [value]="type.id">
+              {{ type.name }} ({{ type.count }})
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Type Pills -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="type-pills">
+          <button *ngFor="let type of assetTypes" 
+                  class="btn btn-outline-primary me-2 mb-2"
+                  [class.active]="selectedType === type.id"
+                  (click)="selectType(type.id)">
+            <i [class]="getTypeIcon(type.id) + ' me-1'" *ngIf="type.id !== 'all'"></i>
+            {{ type.name }}
+            <span class="badge bg-light text-dark ms-1">{{ type.count }}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Downloads Grid -->
+    <div class="row g-4">
+      <div *ngFor="let asset of filteredAssets" class="col-lg-4 col-md-6">
+        <div class="download-card h-100 shadow-custom hover-scale">
+          <div class="download-image">
+            <img [src]="asset.image" [alt]="asset.title" class="img-fluid">
+            <div class="download-type-badge">
+              <span class="badge" [class]="'bg-' + getTypeColor(asset.type)">
+                <i [class]="getTypeIcon(asset.type) + ' me-1'"></i>
+                {{ asset.type | titlecase }}
+              </span>
+            </div>
+          </div>
+          <div class="card-body p-4">
+            <div class="download-meta mb-2">
+              <small class="text-muted">{{ asset.fileType }} • {{ asset.fileSize }}</small>
+            </div>
+            <h5 class="fw-bold mb-3">{{ asset.title }}</h5>
+            <p class="text-muted mb-3">{{ asset.description }}</p>
+            <div class="download-tags mb-3">
+              <span *ngFor="let tag of asset.tags" class="badge bg-light text-dark me-1 mb-1">{{ tag }}</span>
+            </div>
+            <div class="download-stats mb-3">
+              <small class="text-muted">
+                <i class="fas fa-download me-1"></i>{{ asset.downloads }} downloads
+                <span *ngIf="asset.pages" class="ms-3">
+                  <i class="fas fa-file-alt me-1"></i>{{ asset.pages }} pages
+                </span>
+              </small>
+            </div>
+            <button class="btn btn-custom w-100" (click)="downloadAsset(asset)">
+              <i class="fas fa-download me-2"></i>Download
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,11 +1,21 @@
-.navbar-custom {
-  transition: all 0.3s ease;
-  padding: 1rem 0;
-}
-
 .navbar-brand img {
+  height: 55px;
+  width: auto;
+  max-width: 180px;
   border-radius: 8px;
   transition: transform 0.3s ease;
+  filter: brightness(1.1);
+}
+
+.navbar-custom {
+  transition: all 0.3s ease;
+  padding: 0.5rem 0;
+}
+
+.navbar-logo {
+
+  height: 100px !important;
+  width: 500px !important;
 }
 
 .navbar-brand:hover img {
@@ -71,7 +81,6 @@
   padding: 0.5rem;
   border-radius: 8px;
 }
-
 .navbar-toggler:focus {
   box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
 }

@@ -1,0 +1,270 @@
+.about-hero {
+  padding-top: 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.05)" points="0,0 1000,300 1000,1000 0,700"/></svg>');
+  background-size: cover;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.stat-card {
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.about-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.story-content {
+  position: relative;
+}
+
+.timeline-visual {
+  position: relative;
+}
+
+.milestone-timeline {
+  position: relative;
+}
+
+.milestone-timeline::before {
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--secondary-blue), var(--accent-cyan));
+}
+
+.milestone-item {
+  position: relative;
+}
+
+.milestone-year .badge {
+  position: relative;
+  z-index: 2;
+  width: 60px;
+}
+
+.vision-card,
+.mission-card {
+  background: white;
+  border-radius: 15px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.vision-card::before,
+.mission-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, var(--secondary-blue), var(--accent-cyan));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.vision-card:hover::before,
+.mission-card:hover::before {
+  transform: scaleX(1);
+}
+
+.vision-card:hover,
+.mission-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+.vision-icon,
+.mission-icon {
+  position: relative;
+}
+
+.vision-icon::before,
+.mission-icon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, var(--secondary-blue), var(--accent-cyan));
+  border-radius: 50%;
+  opacity: 0.1;
+  z-index: -1;
+}
+
+.team-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+.team-image {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+
+.team-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.team-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.8), rgba(6, 182, 212, 0.8));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.team-card:hover .team-overlay {
+  opacity: 1;
+}
+
+.team-card:hover .team-image img {
+  transform: scale(1.1);
+}
+
+.team-social {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-link {
+  color: white;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.social-link:hover {
+  color: white;
+  transform: scale(1.2);
+}
+
+.expertise-tags .badge {
+  font-size: 0.7rem;
+  border: 1px solid #dee2e6;
+}
+
+.value-card {
+  background: white;
+  border-radius: 15px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
+}
+
+.value-icon {
+  position: relative;
+}
+
+.value-icon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--secondary-blue), var(--accent-cyan));
+  border-radius: 50%;
+  opacity: 0.1;
+  z-index: -1;
+}
+
+.culture-highlight {
+  transition: all 0.3s ease;
+}
+
+.culture-highlight:hover {
+  transform: translateY(-5px);
+}
+
+.culture-highlight i {
+  transition: transform 0.3s ease;
+}
+
+.culture-highlight:hover i {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .about-hero {
+    padding-top: 80px;
+    text-align: center;
+  }
+
+  .hero-stats {
+    justify-content: center;
+  }
+
+  .team-image {
+    height: 250px;
+  }
+
+  .milestone-timeline::before {
+    left: 10px;
+  }
+
+  .milestone-year .badge {
+    width: 50px;
+    font-size: 0.8rem;
+  }
+}

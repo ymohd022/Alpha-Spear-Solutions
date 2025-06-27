@@ -14,6 +14,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatStepperModule } from '@angular/material/stepper';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +28,17 @@ import { AiAutomationComponent } from './services-overview/ai-automation/ai-auto
 import { WebDevelopmentComponent } from './services-overview/web-development/web-development.component';
 import { ErpSystemsComponent } from './services-overview/erp-systems/erp-systems.component';
 import { CustomSoftwareComponent } from './services-overview/custom-software/custom-software.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ResourceHubComponent } from './resource-hub/resource-hub.component';
+import { BlogComponent } from './resource-hub/blog/blog.component';
+import { DownloadsComponent } from './resource-hub/downloads/downloads.component';
+import { VideoLibraryComponent } from './resource-hub/video-library/video-library.component';
+import { CareersComponent } from './careers/careers.component';
+import { ApplicationFormComponent } from './careers/application-form/application-form.component';
+import { SolutionsComponent } from './solutions/solutions.component';
+import { IndustryHealthcareComponent } from './solutions/industry-healthcare/industry-healthcare.component';
+import { CaseStudyDetailComponent } from './solutions/case-study-detail/case-study-detail.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +50,18 @@ import { CustomSoftwareComponent } from './services-overview/custom-software/cus
     AiAutomationComponent,
     WebDevelopmentComponent,
     ErpSystemsComponent,
-    CustomSoftwareComponent
+    CustomSoftwareComponent,
+    AboutUsComponent,
+    ResourceHubComponent,
+    BlogComponent,
+    DownloadsComponent,
+    VideoLibraryComponent,
+    CareersComponent,
+    ApplicationFormComponent,
+    SolutionsComponent,
+    IndustryHealthcareComponent,
+    CaseStudyDetailComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +77,9 @@ import { CustomSoftwareComponent } from './services-overview/custom-software/cus
     MatInputModule,
     MatTabsModule,
     MatExpansionModule,
-    MatStepperModule
+    MatStepperModule,
+    CommonModule,
+    FormsModule
   ],
   providers: [
     provideHttpClient(),

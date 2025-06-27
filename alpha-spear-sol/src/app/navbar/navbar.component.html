@@ -2,8 +2,7 @@
   <div class="container">
     <!-- Logo -->
     <a class="navbar-brand d-flex align-items-center" routerLink="/">
-      <img src="logo.jpeg" alt="Alpha Spear Solutions" height="40" class="me-2">
-      <span class="fw-bold text-gradient fs-5">Alpha Spear Solutions</span>
+      <img src="bg2.png" alt="Alpha Spear Solutions" height="55" class="navbar-logo">
     </a>
 
     <!-- Mobile Toggle -->
@@ -23,7 +22,7 @@
         
         <!-- Services Dropdown -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle fw-500 px-3" href="#" role="button" 
+          <a class="nav-link dropdown-toggle fw-500 px-3" routerLink="#" role="button" 
              data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fas fa-cogs me-1"></i>Services
           </a>
@@ -49,48 +48,48 @@
 
         <!-- Solutions Dropdown -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle fw-500 px-3" href="#" role="button" 
+          <a class="nav-link dropdown-toggle fw-500 px-3" routerLink="/solutions" role="button" 
              data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fas fa-lightbulb me-1"></i>Solutions
           </a>
           <ul class="dropdown-menu shadow-lg border-0">
             <li><h6 class="dropdown-header text-primary">Industry Verticals</h6></li>
-            <li><a class="dropdown-item" href="#healthcare">
+            <li><a class="dropdown-item" routerLink="solutions/healthcare">
               <i class="fas fa-heartbeat me-2 text-success"></i>Healthcare
             </a></li>
-            <li><a class="dropdown-item" href="#retail">
+            <li><a class="dropdown-item" routerLink="#retail">
               <i class="fas fa-shopping-cart me-2 text-warning"></i>Retail
             </a></li>
-            <li><a class="dropdown-item" href="#fintech">
+            <li><a class="dropdown-item" routerLink="#fintech">
               <i class="fas fa-chart-line me-2 text-info"></i>FinTech
             </a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#case-studies">
+            <li><a class="dropdown-item" routerLink="/case-studies">
               <i class="fas fa-chart-bar me-2 text-primary"></i>Case Studies
             </a></li>
           </ul>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link fw-500 px-3" href="#about">
+          <a class="nav-link fw-500 px-3" routerLink="/aboutus">
             <i class="fas fa-users me-1"></i>About Us
           </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link fw-500 px-3" href="#resources">
+          <a class="nav-link fw-500 px-3" routerLink="/resources">
             <i class="fas fa-book me-1"></i>Resource Hub
           </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link fw-500 px-3" href="#careers">
+          <a class="nav-link fw-500 px-3" routerLink="/careers">
             <i class="fas fa-briefcase me-1"></i>Careers
           </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link fw-500 px-3" href="#contact">
+          <a class="nav-link fw-500 px-3" routerLink="/contact">
             <i class="fas fa-envelope me-1"></i>Contact
           </a>
         </li>

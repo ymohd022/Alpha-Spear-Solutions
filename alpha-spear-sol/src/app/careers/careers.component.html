@@ -1,0 +1,336 @@
+<!-- Hero Section -->
+<section class="careers-hero gradient-bg">
+  <div class="container">
+    <div class="row align-items-center min-vh-100">
+      <div class="col-lg-6">
+        <div class="hero-content text-white animate-fade-in">
+          <h1 class="display-4 fw-bold mb-4">
+            Join Our 
+            <span class="text-warning">Team</span>
+          </h1>
+          <p class="lead mb-4 opacity-90">
+            Build the future of technology with Alpha Spear Solutions. We're looking for passionate, 
+            innovative individuals who want to make a real impact in the world of enterprise software 
+            and digital transformation.
+          </p>
+          <div class="hero-stats row g-3 mb-4">
+            <div class="col-6 col-md-3">
+              <div class="stat-card text-center p-3 rounded-3" 
+                   style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+                <h4 class="fw-bold mb-1">50+</h4>
+                <small class="opacity-75">Team Members</small>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="stat-card text-center p-3 rounded-3" 
+                   style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+                <h4 class="fw-bold mb-1">12</h4>
+                <small class="opacity-75">Open Positions</small>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="stat-card text-center p-3 rounded-3" 
+                   style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+                <h4 class="fw-bold mb-1">95%</h4>
+                <small class="opacity-75">Employee Satisfaction</small>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="stat-card text-center p-3 rounded-3" 
+                   style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+                <h4 class="fw-bold mb-1">Remote</h4>
+                <small class="opacity-75">Work Options</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="hero-visual text-center">
+          <div class="careers-animation">
+            <i class="fas fa-users fa-6x text-white opacity-75"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Navigation Tabs -->
+<section class="py-4 bg-light border-bottom">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <ul class="nav nav-pills nav-fill careers-tabs">
+          <li class="nav-item">
+            <button class="nav-link" [class.active]="activeTab === 'positions'" 
+                    (click)="setActiveTab('positions')">
+              <i class="fas fa-briefcase me-2"></i>Open Positions
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" [class.active]="activeTab === 'internships'" 
+                    (click)="setActiveTab('internships')">
+              <i class="fas fa-graduation-cap me-2"></i>Internships
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" [class.active]="activeTab === 'onboarding'" 
+                    (click)="setActiveTab('onboarding')">
+              <i class="fas fa-route me-2"></i>Onboarding Process
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" [class.active]="activeTab === 'benefits'" 
+                    (click)="setActiveTab('benefits')">
+              <i class="fas fa-heart me-2"></i>Benefits & Culture
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Open Positions Content -->
+<div *ngIf="activeTab === 'positions'" class="py-5">
+  <div class="container">
+    <!-- Filters -->
+    <div class="row mb-4">
+      <div class="col-lg-6">
+        <div class="filter-group">
+          <label class="form-label fw-bold">Department</label>
+          <select class="form-select" [(ngModel)]="selectedDepartment" (change)="selectDepartment(selectedDepartment)">
+            <option *ngFor="let dept of departments" [value]="dept.id">
+              {{ dept.name }} ({{ dept.count }})
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="filter-group">
+          <label class="form-label fw-bold">Location</label>
+          <select class="form-select" [(ngModel)]="selectedLocation" (change)="selectLocation(selectedLocation)">
+            <option *ngFor="let location of locations" [value]="location.id">
+              {{ location.name }} ({{ location.count }})
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Job Listings -->
+    <div class="row g-4">
+      <div *ngFor="let position of filteredPositions" class="col-12">
+        <div class="position-card shadow-custom hover-scale" [class.featured]="position.featured">
+          <div class="card-body p-4">
+            <div class="row align-items-start">
+              <div class="col-lg-8">
+                <div class="position-header mb-3">
+                  <div class="d-flex align-items-center mb-2">
+                    <h4 class="fw-bold mb-0 me-3">{{ position.title }}</h4>
+                    <span *ngIf="position.featured" class="badge bg-warning">Featured</span>
+                  </div>
+                  <div class="position-meta">
+                    <span class="badge me-2" [class]="'bg-' + getDepartmentColor(position.department)">
+                      <i [class]="getDepartmentIcon(position.department) + ' me-1'"></i>
+                      {{ position.department | titlecase }}
+                    </span>
+                    <span class="badge bg-light text-dark me-2">
+                      <i class="fas fa-map-marker-alt me-1"></i>{{ position.location | titlecase }}
+                    </span>
+                    <span class="badge bg-light text-dark me-2">
+                      <i class="fas fa-clock me-1"></i>{{ position.type }}
+                    </span>
+                    <span class="badge bg-light text-dark">
+                      <i class="fas fa-user-tie me-1"></i>{{ position.experience }}
+                    </span>
+                  </div>
+                </div>
+                
+                <p class="text-muted mb-3">{{ position.summary }}</p>
+                
+                <div class="row">
+                  <div class="col-md-6">
+                    <h6 class="fw-bold mb-2">Key Responsibilities:</h6>
+                    <ul class="list-unstyled">
+                      <li *ngFor="let responsibility of position.responsibilities.slice(0, 2)" class="mb-1">
+                        <i class="fas fa-check text-success me-2"></i>{{ responsibility }}
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-md-6">
+                    <h6 class="fw-bold mb-2">Qualifications:</h6>
+                    <ul class="list-unstyled">
+                      <li *ngFor="let qualification of position.qualifications.slice(0, 2)" class="mb-1">
+                        <i class="fas fa-star text-warning me-2"></i>{{ qualification }}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-lg-4 text-lg-end">
+                <div class="position-actions">
+                  <div class="mb-3">
+                    <small class="text-muted">Posted: {{ position.posted | date:'MMM dd, yyyy' }}</small>
+                  </div>
+                  <button class="btn btn-custom btn-lg mb-2 w-100" (click)="applyForPosition(position)">
+                    <i class="fas fa-paper-plane me-2"></i>Apply Now
+                  </button>
+                  <button class="btn btn-outline-primary w-100">
+                    <i class="fas fa-info-circle me-2"></i>View Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Internships Content -->
+<div *ngIf="activeTab === 'internships'" class="py-5">
+  <div class="container">
+    <div class="row mb-4">
+      <div class="col-12 text-center">
+        <h2 class="display-6 fw-bold text-gradient mb-3">Internship Opportunities</h2>
+        <p class="lead text-muted">Gain real-world experience and kickstart your career with our comprehensive internship programs.</p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div *ngFor="let internship of filteredInternships" class="col-lg-4 col-md-6">
+        <div class="internship-card h-100 shadow-custom hover-scale">
+          <div class="card-body p-4">
+            <div class="internship-header mb-3">
+              <span class="badge mb-2" [class]="'bg-' + getDepartmentColor(internship.department)">
+                <i [class]="getDepartmentIcon(internship.department) + ' me-1'"></i>
+                {{ internship.department | titlecase }}
+              </span>
+              <h5 class="fw-bold mb-2">{{ internship.title }}</h5>
+              <div class="internship-meta">
+                <small class="text-muted d-block">
+                  <i class="fas fa-calendar me-1"></i>{{ internship.duration }} • Starts {{ internship.startDate | date:'MMM yyyy' }}
+                </small>
+                <small class="text-muted d-block">
+                  <i class="fas fa-map-marker-alt me-1"></i>{{ internship.location | titlecase }}
+                </small>
+                <small class="text-danger d-block">
+                  <i class="fas fa-clock me-1"></i>Apply by {{ internship.applicationDeadline | date:'MMM dd, yyyy' }}
+                </small>
+              </div>
+            </div>
+            
+            <p class="text-muted mb-3">{{ internship.summary }}</p>
+            
+            <div class="mb-3">
+              <h6 class="fw-bold mb-2">What You'll Do:</h6>
+              <ul class="list-unstyled">
+                <li *ngFor="let responsibility of internship.responsibilities.slice(0, 3)" class="mb-1">
+                  <i class="fas fa-arrow-right text-primary me-2"></i>{{ responsibility }}
+                </li>
+              </ul>
+            </div>
+            
+            <div class="mb-3">
+              <h6 class="fw-bold mb-2">Key Projects:</h6>
+              <div class="project-tags">
+                <span *ngFor="let project of internship.projects" class="badge bg-light text-dark me-1 mb-1">{{ project }}</span>
+              </div>
+            </div>
+            
+            <div class="mt-auto">
+              <button class="btn btn-custom w-100" (click)="applyForPosition(internship)">
+                <i class="fas fa-paper-plane me-2"></i>Apply Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Onboarding Process Content -->
+<div *ngIf="activeTab === 'onboarding'" class="py-5">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-12 text-center">
+        <h2 class="display-6 fw-bold text-gradient mb-3">Intern Onboarding Process</h2>
+        <p class="lead text-muted">Your journey from application to becoming a valued team member - here's what to expect.</p>
+      </div>
+    </div>
+
+    <div class="onboarding-timeline">
+      <div *ngFor="let step of onboardingSteps; let i = index" class="timeline-item" [class.timeline-item-right]="i % 2 === 1">
+        <div class="timeline-content">
+          <div class="step-header mb-3">
+            <div class="d-flex align-items-center justify-content-between">
+              <h5 class="fw-bold mb-0">{{ step.title }}</h5>
+              <span class="badge bg-primary">Step {{ step.step }}</span>
+            </div>
+            <small class="text-muted">
+              <i class="fas fa-clock me-1"></i>Duration: {{ step.duration }}
+            </small>
+          </div>
+          
+          <p class="text-muted mb-3">{{ step.description }}</p>
+          
+          <div class="requirements">
+            <h6 class="fw-bold mb-2">Requirements & Actions:</h6>
+            <ul class="list-unstyled">
+              <li *ngFor="let requirement of step.requirements" class="mb-1">
+                <i class="fas fa-check-circle text-success me-2"></i>{{ requirement }}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="step-badge">{{ step.step }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Benefits & Culture Content -->
+<div *ngIf="activeTab === 'benefits'" class="py-5">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-12 text-center">
+        <h2 class="display-6 fw-bold text-gradient mb-3">Why Work With Us?</h2>
+        <p class="lead text-muted">We believe in creating an environment where our team can thrive both professionally and personally.</p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div *ngFor="let benefit of companyBenefits" class="col-lg-4 col-md-6">
+        <div class="benefit-card h-100 text-center p-4 shadow-custom hover-scale">
+          <div class="benefit-icon mb-3">
+            <i [class]="benefit.icon + ' fa-3x text-primary'"></i>
+          </div>
+          <h5 class="fw-bold mb-3">{{ benefit.title }}</h5>
+          <p class="text-muted">{{ benefit.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Application Form Modal -->
+<div class="modal fade" [class.show]="showApplicationForm" [style.display]="showApplicationForm ? 'block' : 'none'" 
+     tabindex="-1" *ngIf="showApplicationForm">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Apply for {{ selectedPosition?.title }}</h5>
+        <button type="button" class="btn-close" (click)="closeApplicationForm()"></button>
+      </div>
+      <div class="modal-body">
+        <app-application-form [position]="selectedPosition" (formSubmitted)="closeApplicationForm()"></app-application-form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-backdrop fade" [class.show]="showApplicationForm" *ngIf="showApplicationForm"></div>

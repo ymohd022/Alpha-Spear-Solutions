@@ -1,0 +1,116 @@
+.featured-download {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.featured-download:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+.download-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--secondary-blue), var(--accent-cyan));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.download-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.featured-download:hover .download-image img {
+  transform: scale(1.1);
+}
+
+.download-overlay {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.download-type {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.3;
+}
+
+.download-type-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+.search-box .input-group-text {
+  border-right: none;
+}
+
+.search-box .form-control {
+  border-left: none;
+}
+
+.search-box .form-control:focus {
+  box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
+  border-color: var(--secondary-blue);
+}
+
+.type-pills .btn.active {
+  background: linear-gradient(135deg, var(--secondary-blue), var(--accent-cyan));
+  border-color: var(--secondary-blue);
+  color: white;
+}
+
+.download-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.download-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+.download-card .download-image {
+  height: 180px;
+}
+
+.download-card:hover .download-image img {
+  transform: scale(1.1);
+}
+
+.download-tags .badge {
+  font-size: 0.7rem;
+  border: 1px solid #dee2e6;
+}
+
+.download-stats {
+  border-top: 1px solid #e9ecef;
+  padding-top: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .featured-download .download-image {
+    height: 160px;
+  }
+
+  .download-card .download-image {
+    height: 140px;
+  }
+
+  .type-pills .btn {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+  }
+}
